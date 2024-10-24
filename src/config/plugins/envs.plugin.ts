@@ -8,6 +8,7 @@ export const envs = {
     EMAIL: env.get('MAILER_EMAIL').required().asEmailString(),
     PASS: env.get('MAILER_SECRET_KEY').required().asString(),
     PROD: env.get('PROD').required().asBool(),
+    MAILER_SERVICE: env.get('MAILER_SERVICE').required().asString(),
 
 
 }

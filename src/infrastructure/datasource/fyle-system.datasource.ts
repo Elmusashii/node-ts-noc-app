@@ -1,4 +1,4 @@
-import fs, { mkdirSync } from "fs";
+import fs from "fs";
 import { LogDataSource } from "../../domain/datasource/log.datasource";
 import { LogEntity, LogSeverityLevel } from "../../domain/entities/log.entity";
 
@@ -6,16 +6,17 @@ import { LogEntity, LogSeverityLevel } from "../../domain/entities/log.entity";
 export class FyleSystemDatasource implements LogDataSource{
 
     private readonly LogsPath = `logs`;
-    private readonly AllLogsPath = 'logs/logs-low.logs';
-    private readonly mediumLogsPath = 'logs/logs-medium.logs';
-    private readonly highLogsPath = 'logs/logs-high.logs';
+    private readonly AllLogsPath = 'logs/logs-low.log';
+    private readonly mediumLogsPath = 'logs/logs-medium.log';
+    private readonly highLogsPath = 'logs/logs-high.log';
 
-    constructor(){this.createLogsFile}
+    constructor(){this.createLogsFile();}
     
 
     private createLogsFile = ()=> {
 
             if (!fs.existsSync( this.LogsPath)) {
+                console.log(this.LogsPath)
                 fs.mkdirSync(this.LogsPath, { recursive: true });  
             }
 
