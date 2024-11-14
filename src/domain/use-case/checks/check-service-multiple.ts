@@ -24,7 +24,7 @@ export class CheckServiceMultiple implements CheckServiceUseCase {
 
    public async execute(url:string):Promise<boolean> {
 
-        let origin = 'check-service.ts';
+        let origin = 'check-service-multiple.ts';
         
         try {
             const req = (await fetch(url)).ok

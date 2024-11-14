@@ -6,7 +6,7 @@ import { LogEntity, LogSeverityLevel } from '../../domain/entities/log.entity';
 
 
 
-interface SendMailOptions{
+export interface SendMailOptions{
     to: string | string[],
     subject: string,
     htmlBody: string,
@@ -15,7 +15,7 @@ interface SendMailOptions{
 
 //todo: attachment
 
-interface Attachment {
+export interface Attachment {
     filename: string;
     path:  string;
 }

@@ -10,5 +10,10 @@
 ```
 docker compose up -d
 ```
-5. Ejecutar ``` npm run dev```
+5. Ejecutar 
+``` 
+npx prisma migrate dev
+```
+6. Verificar que en el archivo "schema.prisma" se encuentre la propiedad "createdAt" y coincida con la propiedad del "log.entity.ts"
+7. Ejecutar ``` npm run dev```
 

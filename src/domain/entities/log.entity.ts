@@ -9,7 +9,7 @@ export interface LogEntityOptions{
      level: LogSeverityLevel;
      message: string;
      origin: string;
-     createdAt?: Date;
+     createAt?: Date;
 
 }
 
@@ -17,41 +17,43 @@ export class LogEntity {
 
     public level: LogSeverityLevel;
     public message: string;
-    public createdAt: Date;
+    public createAt?: Date;
     public origin: string;
 
     constructor(options:LogEntityOptions){
-        const {message,level,origin, createdAt = new Date()} = options;
+        const {message,level,origin, createAt = new Date()} = options;
 
         this.message = message;
         this.level   = level;
         this.origin = origin;
-        this.createdAt = createdAt;
+        this.createAt = createAt;
 
     }
 
     static fromjson = (json:string):LogEntity=>{
-       const {message, level, createdAt, origin} = JSON.parse(json);
+        json = (json === '') ? '{}':json;
 
-       const log = new LogEntity({
-        message:message,
-        level:level,
-        createdAt:createdAt,
-        origin:origin,
+        const {message, level, createAt, origin} = JSON.parse(json);
+
+        const log = new LogEntity({
+            message:message,
+            level:level,
+            createAt: new Date(createAt),
+            origin:origin,
         });
 
-       log.createdAt = new Date(createdAt);
+       log.createAt = new Date(createAt);
 
        return log;
 
     }
 
     static fromObject = (object:{[key:string]:any}):LogEntity=>{
-        const {message, level,createdAt, origin} = object;
+        const {message, level,createAt, origin} = object;
         const log = new LogEntity({
             message:message,
             level:level,
-            createdAt:createdAt,
+            createAt:createAt,
             origin:origin,
             });
         return log;

@@ -15,7 +15,7 @@ export class PostgresLogDatasource implements LogDataSource{
 
     async saveLogs(log: LogEntity): Promise<void> {
         
-        const { message, origin, createdAt } = log;
+        const { message, origin, createAt } = log;
         const level = severityEnum[log.level]
 
 
@@ -23,7 +23,7 @@ export class PostgresLogDatasource implements LogDataSource{
            data:{
             ...log,
             level: level, 
-            createdAt: createdAt ?? new Date(),
+            createAt: createAt ?? new Date(),
            } 
         });
 
